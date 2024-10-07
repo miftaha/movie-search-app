@@ -27,13 +27,14 @@ const Home = () => {
       </div>
     )
   }
-  console.log(movies)
   return (
     <div className="container mx-auto p-6">
       {error && <p>{error}</p>}
       <SearchBar onSearch={fetchMovieData} />
-      {movies &&
-        movies.map((movie) => <MovieCard movie={movie} key={movie.imdbID} />)}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {movies &&
+          movies.map((movie) => <MovieCard movie={movie} key={movie.imdbID} />)}
+      </div>
     </div>
   )
 }
