@@ -17,14 +17,14 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to={'/movie/:id'}
               className="text-black font-medium hover:text-gray-700 duration-300"
             >
               MovieDetails
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

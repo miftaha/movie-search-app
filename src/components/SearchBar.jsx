@@ -13,6 +13,7 @@ const SearchBar = ({ onSearch }) => {
       <input
         type="text"
         placeholder="Enter Movie Name"
+        name="search"
         value={searchTerm}
         onChange={(event) => {
           setSearchTerm(event.target.value)

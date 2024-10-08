@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import MovieDetails from './components/MovieDetails'
+import MovieDetailsPage from './pages/MovieDetailsPage'
 import Navbar from './components/Navbar'
+
 function App() {
   return (
     <>
@@ -9,7 +10,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/movie/:id" element={<MovieDetailsPage />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -16,7 +16,7 @@ const Home = () => {
       setLoading(false)
       setMovies(data.Search)
     } catch (error) {
-      setError('Failed to fetch movies. Try again.')
+      setError(error)
     }
   }
 
