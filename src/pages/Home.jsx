@@ -1,40 +1,50 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import MovieCard from '../components/MovieCard'
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState('')
   const [movies, setMovies] = useState([])
   const [Loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const fetchMovieData = async (searchTerm) => {
-    try {
-      setLoading(true)
-      const response = await fetch(
-        `http://www.omdbapi.com/?s=${searchTerm}&apikey=615c1a03`
-      )
-      const data = await response.json()
-      setLoading(false)
-      setMovies(data.Search)
-    } catch (error) {
-      setError(error)
+  useEffect(() => {
+    const fetchMovieData = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(
+          `http://www.omdbapi.com/?s=${searchTerm}&apikey=615c1a03`
+        )
+        const data = await response.json()
+        if (data.Response === 'True') {
+          setLoading(false)
+          setMovies(data.Search)
+        } else {
+          setMovies([])
+          setLoading(false)
+          // setError(data.Error)
+        }
+      } catch (error) {
+        setError(error)
+      }
     }
-  }
-
+    fetchMovieData()
+  }, [searchTerm])
+  console.log(movies)
   if (Loading) {
     return (
       <div>
-        <p>Loading...</p>
+        <p className="text-center text-2xl font-bold p-5">Loading...</p>
       </div>
     )
   }
   return (
     <div className="container mx-auto p-6">
-      {error && <p>{error}</p>}
-      <SearchBar onSearch={fetchMovieData} />
+      <SearchBar onSearch={setSearchTerm} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {movies &&
           movies.map((movie) => <MovieCard movie={movie} key={movie.imdbID} />)}
       </div>
+      {error && <p>{error}</p>}
     </div>
   )
 }
