@@ -11,7 +11,6 @@ const MovieDetails = ({ movie }) => {
       />
       <div className="lg:w-2/3">
         <h1 className="text-2xl font-bold mb-4">{movie.Title}</h1>
-
         <p className="text-gray-700">
           <strong>Genre:</strong> {movie.Genre}
         </p>

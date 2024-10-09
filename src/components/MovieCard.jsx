@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 /* eslint-disable react/prop-types */
 const MovieCard = ({ movie }) => {
   return (
-    <div className="border rounded-lg p-4 shadow-2xl">
+    <div className=" border rounded-lg p-4 mt-4 shadow-2xl">
       <div className="mb-3">
         <img
           src={movie.Poster}

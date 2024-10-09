@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <div className="container mx-auto p-6">
       <SearchBar onSearch={setSearchTerm} />
-      {error && <p>{error}</p>}
+      {error && <p className="text-center text-2xl font-bold p-5">{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {movies &&
           movies.map((movie) => <MovieCard movie={movie} key={movie.imdbID} />)}
