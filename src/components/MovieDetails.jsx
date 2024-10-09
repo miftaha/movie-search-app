@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 /* eslint-disable react/prop-types */
 const MovieDetails = ({ movie }) => {
   return (
@@ -22,6 +24,12 @@ const MovieDetails = ({ movie }) => {
         <p className="text-gray-700">
           <strong>Ratings:</strong> {movie.imdbRating}
         </p>
+        <Link
+          to={'/'}
+          className="text-lg rounded-lg text-white p-2   px-4 inline-block text-center  shadow-md bg-blue-500 hover:underline mt-10"
+        >
+          Back to Movie
+        </Link>
       </div>
     </div>
   )

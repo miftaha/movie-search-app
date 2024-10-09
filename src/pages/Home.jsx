@@ -9,6 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchMovieData = async () => {
+      if (!searchTerm) return
       try {
         setLoading(true)
         const response = await fetch(
@@ -21,15 +22,15 @@ const Home = () => {
         } else {
           setMovies([])
           setLoading(false)
-          // setError(data.Error)
+          setError(data.Error)
         }
-      } catch (error) {
-        setError(error)
+      } catch (err) {
+        console.log('Network Error Ocurred')
       }
     }
     fetchMovieData()
   }, [searchTerm])
-  console.log(movies)
+
   if (Loading) {
     return (
       <div>
@@ -40,11 +41,11 @@ const Home = () => {
   return (
     <div className="container mx-auto p-6">
       <SearchBar onSearch={setSearchTerm} />
+      {error && <p>{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {movies &&
           movies.map((movie) => <MovieCard movie={movie} key={movie.imdbID} />)}
       </div>
-      {error && <p>{error}</p>}
     </div>
   )
 }
