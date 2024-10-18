@@ -13,7 +13,7 @@ const Home = () => {
       try {
         setLoading(true)
         const response = await fetch(
-          `http://www.omdbapi.com/?s=${searchTerm}&apikey=615c1a03`
+          `https://www.omdbapi.com/?s=${searchTerm}&apikey=615c1a03`
         )
         const data = await response.json()
         if (data.Response === 'True') {
@@ -34,7 +34,7 @@ const Home = () => {
   if (Loading) {
     return (
       <div>
-        <p className="text-center text-2xl font-bold p-5">Loading...</p>
+        <p className="text-center text-6xl font-bold p-5">Loading...</p>
       </div>
     )
   }

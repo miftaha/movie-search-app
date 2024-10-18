@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import MovieDetails from '../components/MovieDetails'
+
 const MovieDetailsPage = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
@@ -11,10 +12,9 @@ const MovieDetailsPage = () => {
     async function fetchMovieDetails() {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?i=${id}&apikey=615c1a03`
+          `https://www.omdbapi.com/?i=${id}&apikey=615c1a03`
         )
         const data = await response.json()
-        console.log(data)
 
         setMovie(data)
       } catch (error) {
@@ -23,7 +23,9 @@ const MovieDetailsPage = () => {
     }
     fetchMovieDetails()
   }, [id])
-  console.log(movie)
+  if (!movie)
+    return <p className="text-center text-6xl font-bold p-5">Loading...</p>
+
   return (
     <>
       {error && <p>{error}</p>}

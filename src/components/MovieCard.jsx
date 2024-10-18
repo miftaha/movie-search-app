@@ -6,7 +6,11 @@ const MovieCard = ({ movie }) => {
     <div className=" border rounded-lg p-4 mt-4 shadow-2xl">
       <div className="mb-3">
         <img
-          src={movie.Poster}
+          src={
+            movie.Poster !== 'N/A'
+              ? movie.Poster
+              : 'https://via.placeholder.com/300'
+          }
           className="object-cover rounded-lg h-64 w-full"
         />
       </div>

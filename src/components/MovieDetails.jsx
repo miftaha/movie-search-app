@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom'
 
 /* eslint-disable react/prop-types */
+
 const MovieDetails = ({ movie }) => {
   return (
     <div className="container mx-auto p-6 flex flex-col lg:flex-row items-start justify-center gap-6">
       <img
-        src={movie.Poster}
+        src={
+          movie.Poster !== 'N/A'
+            ? movie.Poster
+            : 'https://via.placeholder.com/300'
+        }
         alt={movie.Title}
         className="w-full lg:w-1/3 h-96 object-cover rounded-lg"
       />
